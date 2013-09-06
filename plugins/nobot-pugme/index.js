@@ -1,4 +1,4 @@
-var Plugin = require('../../plugin');
+var Plugin = require('nobot').Plugin;
 var util = require('util');
 var http = require('http');
 

@@ -25,10 +25,10 @@ ChatBot.prototype.loadPlugins = function(plugins) {
   for (var i = 0; i < plugins.length; i++) {
     var p;
     try {
-      p = require(__dirname + '/plugins/' + plugins[i]);
+      p = require('../../plugins/' + plugins[i]);    
     } catch (e) {
       try {
-        p = require('./plugins/' + plugins[i]);
+        p = require(__dirname + '/' + plugins[i]);
       } catch (e) {
         try {
           p = require(plugins[i]);
@@ -37,7 +37,6 @@ ChatBot.prototype.loadPlugins = function(plugins) {
         }
       }
     }
-
     this.plugins.push(new p(this));
   }
 };
@@ -196,3 +195,4 @@ ChatBot.prototype.join = function(roomJid) {
 };
 
 module.exports = ChatBot;
+module.exports.Plugin = require('./plugin');

@@ -1,0 +1,23 @@
+{
+  "name": "nobot",
+  "author": "Olivier Truong <truongo@uci.edu>",
+  "keywords": [
+    "nobot",
+    "bot",
+    "hipchat"
+  ],
+  "description": "A simple bot for HipChat",
+  "version": "0.1.0",
+  "dependencies": {
+    "node-xmpp": "0.5.5",
+    "underscore": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oliviert/nobot.git"
+  },
+  "engines": {
+    "node": ">=0.8.x"
+  },
+  "main": "./index"
+}

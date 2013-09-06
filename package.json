@@ -12,6 +12,10 @@
     "node-xmpp": "0.5.5",
     "underscore": "*"
   },
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://raw.github.com/oliviert/nobot/master/LICENSE"
+  }],
   "repository": {
     "type": "git",
     "url": "https://github.com/oliviert/nobot.git"

@@ -22,22 +22,24 @@ function ChatBot(options) {
 util.inherits(ChatBot, events.EventEmitter);
 
 ChatBot.prototype.loadPlugins = function(plugins) {
+  var errors = [];
   for (var i = 0; i < plugins.length; i++) {
-    var p;
+    var path;
     try {
-      p = require('../../plugins/' + plugins[i]);    
+      path = require.resolve('../../plugins/' + plugins[i]);    
     } catch (e) {
       try {
-        p = require(__dirname + '/' + plugins[i]);
+        path = require.resolve(__dirname + '/' + plugins[i]);
       } catch (e) {
         try {
-          p = require(plugins[i]);
+          path = require.resolve(plugins[i]);
         } catch (e) {
-          continue;
+          throw new Error("Cannot find module '" + plugins[i] + "'");
         }
       }
     }
-    this.plugins.push(new p(this));
+    var plugin = require(path);
+    this.plugins.push(new plugin(this));
   }
 };
 

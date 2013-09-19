@@ -10,16 +10,28 @@ function ChatBot(options) {
   this.name = null;
   this.jabber = null;
   this.keepalive = null;
+  this.debug = options.debug;
   this.plugins = [];
   this.iq_count = 0;
   if (options.hasOwnProperty('plugins'))
     this.loadPlugins(options.plugins);
+  
+  if (this.debug === true) {
+    this.enableDebug.call(this);
+  }
   
   events.EventEmitter.call(this);
 
 }
 
 util.inherits(ChatBot, events.EventEmitter);
+
+ChatBot.prototype.enableDebug = function() {
+  var self = this;
+  self.on('data', function(buffer) {
+    util.log(buffer.toString());
+  });
+};
 
 ChatBot.prototype.loadPlugins = function(plugins) {
   var errors = [];

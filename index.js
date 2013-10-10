@@ -148,6 +148,10 @@ ChatBot.prototype.getProfile = function(callback) {
   });
 };
 
+ChatBot.prototype.parseId = function(jid) {
+  return parseInt(jid.user.split('_')[1], 10);
+};
+
 ChatBot.prototype.message = function(targetJid, message) {
   var stanza;
   if (targetJid.domain === 'conf.hipchat.com') {

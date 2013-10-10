@@ -18,3 +18,7 @@ var bot = new nobot({
 
 bot.connect();
 ```
+
+## About
+
+Nobot is based on Christian Joudrey's [wobot](https://github.com/cjoudrey/wobot).

@@ -153,6 +153,11 @@ ChatBot.prototype.parseId = function(jid) {
 };
 
 ChatBot.prototype.message = function(targetJid, message) {
+  if (arguments.length !== 2) {
+    throw new Error('Expected arguments of length 2. Received '+arguments.length+'.');
+    return;
+  }
+  
   var stanza;
   if (targetJid.domain === 'conf.hipchat.com') {
     stanza = new xmpp.Element('message', {
